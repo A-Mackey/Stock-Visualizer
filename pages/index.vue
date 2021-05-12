@@ -1,31 +1,45 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="4">
-      <h1>test</h1>
-      <v-col cols="4" v-for="{stock, index} in stocks" :key="index">
-        <h1>test {{index}}</h1>
-        <Stock name="stock.name" :symbol="stock.symbol" />
-      </v-col>
-    </v-col>
-  </v-row>
+  <v-container fluid>
+
+      <v-row>
+            <v-col 
+              xs="12"
+              sm="12" 
+              md="6" 
+              lg="4" 
+              xl="3"
+              v-for="stock, i in stocks" 
+              :key="i"
+            >
+
+                <StockModule 
+                  :name="stock.name"
+                  :symbol="stock.symbol"
+                />
+            </v-col>
+        </v-row>
+  </v-container>
 </template>
 
 <script>
 
-import Stock from '../components/Stock'
+import StockModule from '../components/Stock'
 
 export default {
   components: {
-    Stock
+    StockModule
   },
 
-  data: {
-    stocks: [
-      { name: "Microsoft", symbol: "MSFT" },
-      { name: "Apple", symbol: "AAPL" },
-      { name: "Anheuser-Busch", symbol: "BUD" },
-      { name: "S&P 500", symbol: "SPX" },
-    ],
-  },
+  data () {
+    return {
+      stocks: [
+        { name: "Microsoft", symbol: "MSFT" },
+        { name: "Apple", symbol: "AAPL" },
+        { name: "Anheuser-Busch", symbol: "BUD" },
+        { name: "S&P 500", symbol: "SPX" },
+      ],
+      options: { }
+    }
+  }
 }
 </script>

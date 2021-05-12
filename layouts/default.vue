@@ -30,31 +30,38 @@
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
+      
+      <!-- Expand menu button -->
+      <!-- <v-btn
         icon
         @click.stop="miniVariant = !miniVariant"
       >
         <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
+      </v-btn> -->
+      
+      <!-- Clipped Button -->
+      <!-- <v-btn
         icon
         @click.stop="clipped = !clipped"
       >
         <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
+      </v-btn> -->
+
+      <!-- Minus Button -->
+      <!-- <v-btn
         icon
         @click.stop="fixed = !fixed"
       >
         <v-icon>mdi-minus</v-icon>
-      </v-btn>
+      </v-btn> -->
+
       <v-toolbar-title v-text="title" />
       <v-spacer />
       <v-btn
         icon
         @click.stop="rightDrawer = !rightDrawer"
       >
-        <v-icon>mdi-menu</v-icon>
+        <v-icon>mdi-cog</v-icon>
       </v-btn>
     </v-app-bar>
     <v-main>
@@ -62,12 +69,15 @@
         <nuxt />
       </v-container>
     </v-main>
+
+    <!-- Side Drawer -->
     <v-navigation-drawer
       v-model="rightDrawer"
       :right="right"
       temporary
       fixed
     >
+    
       <v-list>
         <v-list-item @click.native="right = !right">
           <v-list-item-action>
@@ -78,6 +88,8 @@
           <v-list-item-title>Switch drawer (click me)</v-list-item-title>
         </v-list-item>
       </v-list>
+
+
     </v-navigation-drawer>
     <v-footer
       :absolute="!fixed"
@@ -92,25 +104,30 @@
 export default {
   data () {
     return {
-      clipped: false,
+      clipped: true,
       drawer: false,
       fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
+          icon: 'mdi-currency-usd',
+          title: 'New York Exchange',
           to: '/'
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
+          icon: 'mdi-currency-btc',
+          title: 'Cryptocurrency',
+          to: '/crypto'
+        },
+        {
+          icon: 'mdi-cog-outline',
+          title: 'New York Exchange',
+          to: '/settings'
+        },
       ],
-      miniVariant: false,
+      miniVariant: true,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Stocks'
     }
   }
 }
